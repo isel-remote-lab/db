@@ -1,0 +1,745 @@
+{
+  "tables": {
+    "user": {
+      "name": "user",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "comment": null
+        },
+        "o_auth_id": {
+          "name": "o_auth_id",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "comment": null
+        },
+        "role": {
+          "name": "role",
+          "type": "bpchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": true,
+          "notNull": true,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "token": {
+      "name": "token",
+      "columns": {
+        "token_validation": {
+          "name": "token_validation",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "last_used_at": {
+          "name": "last_used_at",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "group": {
+      "name": "group",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "comment": null
+        },
+        "group_name": {
+          "name": "group_name",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "group_description": {
+          "name": "group_description",
+          "type": "text",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "user_group": {
+      "name": "user_group",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "group_id": {
+          "name": "group_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "laboratory": {
+      "name": "laboratory",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "comment": null
+        },
+        "lab_name": {
+          "name": "lab_name",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "lab_description": {
+          "name": "lab_description",
+          "type": "text",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "lab_duration": {
+          "name": "lab_duration",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "lab_queue_limit": {
+          "name": "lab_queue_limit",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "lab_waiting_queue": {
+      "name": "lab_waiting_queue",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "lab_id": {
+          "name": "lab_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "lab_session": {
+      "name": "lab_session",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "lab_id": {
+          "name": "lab_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "start_time": {
+          "name": "start_time",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "end_time": {
+          "name": "end_time",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "state": {
+          "name": "state",
+          "type": "bpchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "group_laboratory": {
+      "name": "group_laboratory",
+      "columns": {
+        "group_id": {
+          "name": "group_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "lab_id": {
+          "name": "lab_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "app_invite": {
+      "name": "app_invite",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "invite_code": {
+          "name": "invite_code",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "last_used_at": {
+          "name": "last_used_at",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "group_id": {
+          "name": "group_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "hardware": {
+      "name": "hardware",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": true,
+          "unique": true,
+          "notNull": true,
+          "comment": null
+        },
+        "hw_name": {
+          "name": "hw_name",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "hw_serial_num": {
+          "name": "hw_serial_num",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "status": {
+          "name": "status",
+          "type": "bpchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "mac_address": {
+          "name": "mac_address",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "ip_address": {
+          "name": "ip_address",
+          "type": "varchar",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": false,
+          "comment": null
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamptz",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    },
+    "hardware_laboratory": {
+      "name": "hardware_laboratory",
+      "columns": {
+        "hw_id": {
+          "name": "hw_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        },
+        "lab_id": {
+          "name": "lab_id",
+          "type": "int4",
+          "default": null,
+          "check": null,
+          "primary": false,
+          "unique": false,
+          "notNull": true,
+          "comment": null
+        }
+      },
+      "comment": null,
+      "indexes": {},
+      "constraints": {}
+    }
+  },
+  "relationships": {
+    "user_id_to_token_user_id": {
+      "name": "user_id_to_token_user_id",
+      "primaryTableName": "user",
+      "primaryColumnName": "id",
+      "foreignTableName": "token",
+      "foreignColumnName": "user_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "user_id_to_group_owner_id": {
+      "name": "user_id_to_group_owner_id",
+      "primaryTableName": "user",
+      "primaryColumnName": "id",
+      "foreignTableName": "group",
+      "foreignColumnName": "owner_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "user_id_to_user_group_user_id": {
+      "name": "user_id_to_user_group_user_id",
+      "primaryTableName": "user",
+      "primaryColumnName": "id",
+      "foreignTableName": "user_group",
+      "foreignColumnName": "user_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "group_id_to_user_group_group_id": {
+      "name": "group_id_to_user_group_group_id",
+      "primaryTableName": "group",
+      "primaryColumnName": "id",
+      "foreignTableName": "user_group",
+      "foreignColumnName": "group_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "user_id_to_laboratory_owner_id": {
+      "name": "user_id_to_laboratory_owner_id",
+      "primaryTableName": "user",
+      "primaryColumnName": "id",
+      "foreignTableName": "laboratory",
+      "foreignColumnName": "owner_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "user_id_to_lab_waiting_queue_user_id": {
+      "name": "user_id_to_lab_waiting_queue_user_id",
+      "primaryTableName": "user",
+      "primaryColumnName": "id",
+      "foreignTableName": "lab_waiting_queue",
+      "foreignColumnName": "user_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "laboratory_id_to_lab_waiting_queue_lab_id": {
+      "name": "laboratory_id_to_lab_waiting_queue_lab_id",
+      "primaryTableName": "laboratory",
+      "primaryColumnName": "id",
+      "foreignTableName": "lab_waiting_queue",
+      "foreignColumnName": "lab_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "laboratory_id_to_lab_session_lab_id": {
+      "name": "laboratory_id_to_lab_session_lab_id",
+      "primaryTableName": "laboratory",
+      "primaryColumnName": "id",
+      "foreignTableName": "lab_session",
+      "foreignColumnName": "lab_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "user_id_to_lab_session_owner_id": {
+      "name": "user_id_to_lab_session_owner_id",
+      "primaryTableName": "user",
+      "primaryColumnName": "id",
+      "foreignTableName": "lab_session",
+      "foreignColumnName": "owner_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "group_id_to_group_laboratory_group_id": {
+      "name": "group_id_to_group_laboratory_group_id",
+      "primaryTableName": "group",
+      "primaryColumnName": "id",
+      "foreignTableName": "group_laboratory",
+      "foreignColumnName": "group_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "laboratory_id_to_group_laboratory_lab_id": {
+      "name": "laboratory_id_to_group_laboratory_lab_id",
+      "primaryTableName": "laboratory",
+      "primaryColumnName": "id",
+      "foreignTableName": "group_laboratory",
+      "foreignColumnName": "lab_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "user_id_to_app_invite_owner_id": {
+      "name": "user_id_to_app_invite_owner_id",
+      "primaryTableName": "user",
+      "primaryColumnName": "id",
+      "foreignTableName": "app_invite",
+      "foreignColumnName": "owner_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "group_id_to_app_invite_group_id": {
+      "name": "group_id_to_app_invite_group_id",
+      "primaryTableName": "group",
+      "primaryColumnName": "id",
+      "foreignTableName": "app_invite",
+      "foreignColumnName": "group_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "hardware_id_to_hardware_laboratory_hw_id": {
+      "name": "hardware_id_to_hardware_laboratory_hw_id",
+      "primaryTableName": "hardware",
+      "primaryColumnName": "id",
+      "foreignTableName": "hardware_laboratory",
+      "foreignColumnName": "hw_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    },
+    "laboratory_id_to_hardware_laboratory_lab_id": {
+      "name": "laboratory_id_to_hardware_laboratory_lab_id",
+      "primaryTableName": "laboratory",
+      "primaryColumnName": "id",
+      "foreignTableName": "hardware_laboratory",
+      "foreignColumnName": "lab_id",
+      "cardinality": "ONE_TO_MANY",
+      "updateConstraint": "NO_ACTION",
+      "deleteConstraint": "NO_ACTION"
+    }
+  },
+  "tableGroups": {}
+}
