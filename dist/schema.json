@@ -13,16 +13,6 @@
           "notNull": true,
           "comment": null
         },
-        "o_auth_id": {
-          "name": "o_auth_id",
-          "type": "varchar",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": true,
-          "notNull": true,
-          "comment": null
-        },
         "role": {
           "name": "role",
           "type": "bpchar",
@@ -33,8 +23,8 @@
           "notNull": true,
           "comment": null
         },
-        "username": {
-          "name": "username",
+        "name": {
+          "name": "name",
           "type": "varchar",
           "default": null,
           "check": null,
@@ -66,7 +56,18 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "PRIMARY_id": {
+          "name": "PRIMARY_id",
+          "type": "PRIMARY KEY",
+          "columnName": "id"
+        },
+        "UNIQUE_email": {
+          "name": "UNIQUE_email",
+          "type": "UNIQUE",
+          "columnName": "email"
+        }
+      }
     },
     "token": {
       "name": "token",
@@ -114,7 +115,17 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "user_id_to_token_user_id": {
+          "type": "FOREIGN KEY",
+          "name": "user_id_to_token_user_id",
+          "columnName": "user_id",
+          "targetTableName": "user",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "group": {
       "name": "group",
@@ -172,7 +183,22 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "PRIMARY_id": {
+          "name": "PRIMARY_id",
+          "type": "PRIMARY KEY",
+          "columnName": "id"
+        },
+        "user_id_to_group_owner_id": {
+          "type": "FOREIGN KEY",
+          "name": "user_id_to_group_owner_id",
+          "columnName": "owner_id",
+          "targetTableName": "user",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "user_group": {
       "name": "user_group",
@@ -200,7 +226,26 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "user_id_to_user_group_user_id": {
+          "type": "FOREIGN KEY",
+          "name": "user_id_to_user_group_user_id",
+          "columnName": "user_id",
+          "targetTableName": "user",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        },
+        "group_id_to_user_group_group_id": {
+          "type": "FOREIGN KEY",
+          "name": "group_id_to_user_group_group_id",
+          "columnName": "group_id",
+          "targetTableName": "group",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "laboratory": {
       "name": "laboratory",
@@ -278,7 +323,22 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "PRIMARY_id": {
+          "name": "PRIMARY_id",
+          "type": "PRIMARY KEY",
+          "columnName": "id"
+        },
+        "user_id_to_laboratory_owner_id": {
+          "type": "FOREIGN KEY",
+          "name": "user_id_to_laboratory_owner_id",
+          "columnName": "owner_id",
+          "targetTableName": "user",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "lab_waiting_queue": {
       "name": "lab_waiting_queue",
@@ -316,7 +376,26 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "user_id_to_lab_waiting_queue_user_id": {
+          "type": "FOREIGN KEY",
+          "name": "user_id_to_lab_waiting_queue_user_id",
+          "columnName": "user_id",
+          "targetTableName": "user",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        },
+        "laboratory_id_to_lab_waiting_queue_lab_id": {
+          "type": "FOREIGN KEY",
+          "name": "laboratory_id_to_lab_waiting_queue_lab_id",
+          "columnName": "lab_id",
+          "targetTableName": "laboratory",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "lab_session": {
       "name": "lab_session",
@@ -384,7 +463,26 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "laboratory_id_to_lab_session_lab_id": {
+          "type": "FOREIGN KEY",
+          "name": "laboratory_id_to_lab_session_lab_id",
+          "columnName": "lab_id",
+          "targetTableName": "laboratory",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        },
+        "user_id_to_lab_session_owner_id": {
+          "type": "FOREIGN KEY",
+          "name": "user_id_to_lab_session_owner_id",
+          "columnName": "owner_id",
+          "targetTableName": "user",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "group_laboratory": {
       "name": "group_laboratory",
@@ -412,7 +510,26 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "group_id_to_group_laboratory_group_id": {
+          "type": "FOREIGN KEY",
+          "name": "group_id_to_group_laboratory_group_id",
+          "columnName": "group_id",
+          "targetTableName": "group",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        },
+        "laboratory_id_to_group_laboratory_lab_id": {
+          "type": "FOREIGN KEY",
+          "name": "laboratory_id_to_group_laboratory_lab_id",
+          "columnName": "lab_id",
+          "targetTableName": "laboratory",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "app_invite": {
       "name": "app_invite",
@@ -480,7 +597,26 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "user_id_to_app_invite_owner_id": {
+          "type": "FOREIGN KEY",
+          "name": "user_id_to_app_invite_owner_id",
+          "columnName": "owner_id",
+          "targetTableName": "user",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        },
+        "group_id_to_app_invite_group_id": {
+          "type": "FOREIGN KEY",
+          "name": "group_id_to_app_invite_group_id",
+          "columnName": "group_id",
+          "targetTableName": "group",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     },
     "hardware": {
       "name": "hardware",
@@ -558,7 +694,13 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "PRIMARY_id": {
+          "name": "PRIMARY_id",
+          "type": "PRIMARY KEY",
+          "columnName": "id"
+        }
+      }
     },
     "hardware_laboratory": {
       "name": "hardware_laboratory",
@@ -586,7 +728,26 @@
       },
       "comment": null,
       "indexes": {},
-      "constraints": {}
+      "constraints": {
+        "hardware_id_to_hardware_laboratory_hw_id": {
+          "type": "FOREIGN KEY",
+          "name": "hardware_id_to_hardware_laboratory_hw_id",
+          "columnName": "hw_id",
+          "targetTableName": "hardware",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        },
+        "laboratory_id_to_hardware_laboratory_lab_id": {
+          "type": "FOREIGN KEY",
+          "name": "laboratory_id_to_hardware_laboratory_lab_id",
+          "columnName": "lab_id",
+          "targetTableName": "laboratory",
+          "targetColumnName": "id",
+          "updateConstraint": "NO_ACTION",
+          "deleteConstraint": "NO_ACTION"
+        }
+      }
     }
   },
   "relationships": {
