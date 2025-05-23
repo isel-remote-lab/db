@@ -531,93 +531,6 @@
         }
       }
     },
-    "app_invite": {
-      "name": "app_invite",
-      "columns": {
-        "id": {
-          "name": "id",
-          "type": "int4",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": false,
-          "comment": null
-        },
-        "invite_code": {
-          "name": "invite_code",
-          "type": "varchar",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "comment": null
-        },
-        "owner_id": {
-          "name": "owner_id",
-          "type": "int4",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "comment": null
-        },
-        "created_at": {
-          "name": "created_at",
-          "type": "timestamptz",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "comment": null
-        },
-        "last_used_at": {
-          "name": "last_used_at",
-          "type": "timestamptz",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "comment": null
-        },
-        "group_id": {
-          "name": "group_id",
-          "type": "int4",
-          "default": null,
-          "check": null,
-          "primary": false,
-          "unique": false,
-          "notNull": true,
-          "comment": null
-        }
-      },
-      "comment": null,
-      "indexes": {},
-      "constraints": {
-        "user_id_to_app_invite_owner_id": {
-          "type": "FOREIGN KEY",
-          "name": "user_id_to_app_invite_owner_id",
-          "columnName": "owner_id",
-          "targetTableName": "user",
-          "targetColumnName": "id",
-          "updateConstraint": "NO_ACTION",
-          "deleteConstraint": "NO_ACTION"
-        },
-        "group_id_to_app_invite_group_id": {
-          "type": "FOREIGN KEY",
-          "name": "group_id_to_app_invite_group_id",
-          "columnName": "group_id",
-          "targetTableName": "group",
-          "targetColumnName": "id",
-          "updateConstraint": "NO_ACTION",
-          "deleteConstraint": "NO_ACTION"
-        }
-      }
-    },
     "hardware": {
       "name": "hardware",
       "columns": {
@@ -857,26 +770,6 @@
       "primaryColumnName": "id",
       "foreignTableName": "group_laboratory",
       "foreignColumnName": "lab_id",
-      "cardinality": "ONE_TO_MANY",
-      "updateConstraint": "NO_ACTION",
-      "deleteConstraint": "NO_ACTION"
-    },
-    "user_id_to_app_invite_owner_id": {
-      "name": "user_id_to_app_invite_owner_id",
-      "primaryTableName": "user",
-      "primaryColumnName": "id",
-      "foreignTableName": "app_invite",
-      "foreignColumnName": "owner_id",
-      "cardinality": "ONE_TO_MANY",
-      "updateConstraint": "NO_ACTION",
-      "deleteConstraint": "NO_ACTION"
-    },
-    "group_id_to_app_invite_group_id": {
-      "name": "group_id_to_app_invite_group_id",
-      "primaryTableName": "group",
-      "primaryColumnName": "id",
-      "foreignTableName": "app_invite",
-      "foreignColumnName": "group_id",
       "cardinality": "ONE_TO_MANY",
       "updateConstraint": "NO_ACTION",
       "deleteConstraint": "NO_ACTION"

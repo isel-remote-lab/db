@@ -1,0 +1,8 @@
+services:
+  liamhq:
+    build:
+      context: .
+      dockerfile: liamhq-Dockerfile
+    container_name: liam-hq-remote-lab-db
+    ports:
+      - 8080:8080

@@ -90,17 +90,6 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    rl.app_invite (
-        id INT GENERATED ALWAYS AS IDENTITY,
-        invite_code VARCHAR(255) NOT NULL,
-        owner_id INT NOT NULL REFERENCES rl.user (id),
-        created_at TIMESTAMPTZ NOT NULL,
-        last_used_at TIMESTAMPTZ NOT NULL,
-        group_id INT NOT NULL REFERENCES rl.group (id),
-        PRIMARY KEY (id, owner_id)
-    );
-
-CREATE TABLE
     rl.hardware (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         hw_name VARCHAR(255) NOT NULL,

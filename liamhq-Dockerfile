@@ -1,0 +1,10 @@
+FROM node:20-alpine
+WORKDIR /app
+RUN npm install -g @liam-hq/cli
+
+COPY schema.sql .
+RUN npx @liam-hq/cli erd build --format postgres --input schema.sql
+
+EXPOSE 8080
+
+CMD ["npx", "http-server", "dist/"]
