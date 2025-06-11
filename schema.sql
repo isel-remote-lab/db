@@ -38,8 +38,8 @@ CREATE TABLE
 CREATE TABLE
     rl.group (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        group_name VARCHAR(255) NOT NULL,
-        group_description TEXT,
+        name VARCHAR(255) NOT NULL,
+        description TEXT,
         created_at TIMESTAMPTZ NOT NULL,
         owner_id INT NOT NULL REFERENCES rl.user (id)
     );
@@ -54,10 +54,10 @@ CREATE TABLE
 CREATE TABLE
     rl.laboratory (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        lab_name VARCHAR(255) NOT NULL,
-        lab_description TEXT,
-        lab_duration INT NOT NULL,
-        lab_queue_limit INT NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        description TEXT,
+        duration INT NOT NULL,
+        queue_limit INT NOT NULL,
         created_at TIMESTAMPTZ NOT NULL,
         owner_id INT NOT NULL REFERENCES rl.user (id)
     );
@@ -92,8 +92,8 @@ CREATE TABLE
 CREATE TABLE
     rl.hardware (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        hw_name VARCHAR(255) NOT NULL,
-        hw_serial_num VARCHAR(255) NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        serial_num VARCHAR(255) NOT NULL,
         status CHAR(1) NOT NULL,
         mac_address VARCHAR(255),
         ip_address VARCHAR(255),
