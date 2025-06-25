@@ -93,7 +93,7 @@ CREATE TABLE
     rl.hardware (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
-        serial_num VARCHAR(255) NOT NULL,
+        serial_number VARCHAR(255) NOT NULL,
         status CHAR(1) NOT NULL,
         mac_address VARCHAR(255),
         ip_address VARCHAR(255),
