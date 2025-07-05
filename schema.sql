@@ -72,9 +72,21 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    rl.hardware (
+        id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        serial_number VARCHAR(255) NOT NULL,
+        status CHAR(1) NOT NULL,
+        mac_address VARCHAR(255),
+        ip_address VARCHAR(255),
+        created_at TIMESTAMPTZ NOT NULL
+    );
+
+CREATE TABLE
     rl.lab_session (
         id INT GENERATED ALWAYS AS IDENTITY,
         lab_id INT NOT NULL REFERENCES rl.laboratory (id),
+        hw_id INT NOT NULL REFERENCES rl.hardware (id),
         owner_id INT NOT NULL REFERENCES rl.user (id),
         start_time TIMESTAMPTZ,
         end_time TIMESTAMPTZ,
@@ -87,17 +99,6 @@ CREATE TABLE
         group_id INT NOT NULL REFERENCES rl.group (id),
         lab_id INT NOT NULL REFERENCES rl.laboratory (id),
         PRIMARY KEY (group_id, lab_id)
-    );
-
-CREATE TABLE
-    rl.hardware (
-        id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        name VARCHAR(255) NOT NULL,
-        serial_number VARCHAR(255) NOT NULL,
-        status CHAR(1) NOT NULL,
-        mac_address VARCHAR(255),
-        ip_address VARCHAR(255),
-        created_at TIMESTAMPTZ NOT NULL
     );
 
 CREATE TABLE
