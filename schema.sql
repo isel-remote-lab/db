@@ -27,11 +27,12 @@ CREATE TABLE
 
 CREATE TABLE
     rl.token (
+        id INT GENERATED ALWAYS AS IDENTITY,
         token_validation VARCHAR(255) NOT NULL,
         user_id INT NOT NULL REFERENCES rl.user (id),
         created_at TIMESTAMPTZ NOT NULL,
         last_used_at TIMESTAMPTZ NOT NULL,
-        PRIMARY KEY (token_validation, user_id)
+        PRIMARY KEY (id, user_id)
     );
 
 -- Groups can be general groups, classes or student groups
