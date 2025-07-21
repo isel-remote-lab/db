@@ -10,4 +10,4 @@ VALUES
 -- Insert hardware
 INSERT INTO rl.hardware (name, serial_number, status, mac_address, ip_address, created_at)
 VALUES
-    ('Hardware-1', 'hardware-1', 'A', NULL, 'https://rl.at.isel.eu.org/api/v1/hardware/1/ws', now());
+    ('Hardware-1', 'hardware-1', 'A', NULL, 'rl.at.isel.eu.org/hardware/1', now());
