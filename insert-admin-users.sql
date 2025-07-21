@@ -10,4 +10,4 @@ VALUES
 -- Insert hardware
 INSERT INTO rl.hardware (name, serial_number, status, mac_address, ip_address, created_at)
 VALUES
-    ('Hardware-example', 'serial-number-example', 'A', NULL, 'localhost:1906', now());
+    ('Hardware-1', 'serial-number-1', 'A', NULL, 'localhost:1906', now());
