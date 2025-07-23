@@ -86,7 +86,7 @@ CREATE TABLE
 CREATE TABLE
     rl.lab_session (
         id INT GENERATED ALWAYS AS IDENTITY,
-        lab_id INT NOT NULL REFERENCES rl.laboratory (id),
+        lab_id INT NOT NULL,
         hw_id INT NOT NULL REFERENCES rl.hardware (id),
         owner_id INT NOT NULL REFERENCES rl.user (id),
         start_time TIMESTAMPTZ,
